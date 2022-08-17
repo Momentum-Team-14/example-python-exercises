@@ -19,15 +19,31 @@ attributes it will have and what it will be able to do'''
 
 class Pet():
     def __init__(self, name, species, color):
+        # self refers to the specific instance of the class
         self.name = name
         self.species = species
         self.color = color
 
+    def __str__(self):
+        return f'{self.name} the {self.species}'
+
+    def call(self):
+        print(f'{self}, come here!')
+
+    def fetch(self):
+        return 'toy'
+
+    def play(self, other):
+        self.fetch()
+        other.fetch()
+        print(f'{self} is playing with {other}')
+
 
 # build a specific instance of the class
 # writing the name of the class followed by () invokes the __init__() 
+# callping print() on an instance of a class invokes its __str__() method
 # method for that class
 stephens_dog = Pet("Breve", "Corgi", "sable")
 orlandos_hedgehog = Pet("Ogbert", "hedgehog", ["black", "white", "brown"])
-print(stephens_dog.__dict__)
-print(orlandos_hedgehog.__dict__)
+orlandos_hedgehog.call()
+orlandos_hedgehog.play(stephens_dog)
